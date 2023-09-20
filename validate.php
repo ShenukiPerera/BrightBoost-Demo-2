@@ -18,16 +18,27 @@ $password = $_POST["password"];
 $role = $_POST["role"];
 
 // SQL query to validate user credentials
-//$sql = "SELECT * FROM STAFF WHERE username='$username' AND password='$password' AND role='$role'";
-//$result = $conn->query($sql);
+$sql = "";
+$result = $conn->query($sql);
 
-// if ($result->num_rows > 0) {
-//     // Valid credentials
-//     echo "Login successful!";
-// } else {
-//     // Invalid credentials
-//     echo "Login failed. Please check your username, password, and role.";
-//}
+if ($result->num_rows > 0) {
+    // Valid credentials
+    echo "Login successful!";
+    // Redirect based on role
+    if ($role == "admin") {
+        header("Location: /Admin/admin_home.html");
+    } elseif ($role == "student") {
+        header("Location: /Student/student_home.html");
+    } elseif ($role == "teacher") {
+        header("Location: /Teacher/teacher_home.html");
+    } else {
+        // Handle unknown roles here
+        echo "Unknown role. Please contact support.";
+    }
+} else {
+    // Invalid credentials
+    echo "Login failed. Please check your username, password, and role.";
+}
 
-//$conn->close();
+$conn->close();
 ?>
