@@ -1,0 +1,36 @@
+CREATE DATABASE brightboost_db;
+
+CREATE TABLE staff (
+	staffid INT,
+    username varchar(10) UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    password VARCHAR(10) NOT NULL,
+    role VARCHAR(10) NOT NULL,
+    contactnumber int NOT NULL,
+    email VARCHAR(255),
+    PRIMARY KEY(staffid,email)
+);
+
+CREATE TABLE student (
+	studentid INT,
+    name VARCHAR(255) NOT NULL,
+    username varchar(30) UNIQUE,    
+    password VARCHAR(30) NOT NULL,
+    fees DECIMAL(10,2),
+    contactnumber int NOT NULL,
+    email VARCHAR(255),
+    PRIMARY KEY(studentid,email)
+);
+
+
+
+
+
+
+INSERT INTO staff ( staffid, name, username, password, role, contactnumber, email)
+VALUES ( 1, "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gmail.com"),
+       ( 2, "Amy Smith", "staff01", "staff01", "teacher", '0412345999', "amysmith@gmail.com");
+
+INSERT INTO student ( studentid, name, username, password, fees, contactnumber, email)
+VALUES ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
+       ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");

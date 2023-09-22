@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root";
-$dbname = "your_database_name";
+$password = "";
+$dbname = "brightboost_db";
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,8 +18,15 @@ $password = $_POST["password"];
 $role = $_POST["role"];
 
 // SQL query to validate user credentials
-$sql = "";
-$result = $conn->query($sql);
+if ($role == "student"){
+    $sql = "SELECT * FROM STUDENT WHERE username='$username' AND password='$password' ";
+    $result = $conn->query($sql);
+}
+else{
+    $sql = "SELECT * FROM STAFF WHERE username='$username' AND password='$password' AND role='$role'";
+    $result = $conn->query($sql);
+}
+
 
 if ($result->num_rows > 0) {
     // Valid credentials
