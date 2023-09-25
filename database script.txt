@@ -23,8 +23,6 @@ CREATE TABLE student (
 );
 
 
-this is a endit
-
 
 
 INSERT INTO staff ( staffid, name, username, password, role, contactnumber, email)
