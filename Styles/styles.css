@@ -5,6 +5,7 @@
     padding: 20px;
 }
 
+/* Login Button */
 button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -16,4 +17,11 @@ button {
 
 .error {
     color: red;
+}
+
+/*Navigation bar styling*/
+.navigation {
+    border: #007bff;
+    padding: 50%;
+    margin: 40%;
 }
