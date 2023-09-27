@@ -20,8 +20,30 @@ button {
 }
 
 /*Navigation bar styling*/
+/* Style for the navigation menu */
 .navigation {
-    border: #007bff;
-    padding: 50%;
-    margin: 40%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display menu items in a row */
+}
+
+.navbar li {
+    margin-right: 20px; /* Adjust spacing between menu items */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
 }

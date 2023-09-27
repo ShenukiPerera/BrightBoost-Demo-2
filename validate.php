@@ -42,6 +42,7 @@ if ($result->num_rows > 0) {
         // Handle unknown roles here
         echo "Unknown role. Please contact support.";
     }
+
 } else {
     // Invalid credentials
     echo "Login failed. Please check your username, password, and role.";
@@ -49,3 +50,4 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
