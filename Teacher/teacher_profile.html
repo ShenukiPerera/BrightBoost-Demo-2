@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Styles/styles.css">
+    <title>Teacher-Profile</title>
+</head>
+<body>
+    <section class="navigation">
+        <nav class="navbar" role="navigation">
+            <ul>
+                <li><a href="teacher_home.html">Home</a></li>
+                <li><a href="teacher_profile.html">Profile</a></li>
+                <li><a href="">Session</a></li>              
+            </ul>
+        </nav>
+    </section>
+
+    <form method="get" action="teacher_profile.php">
+        <!-- display staff table fetched values -->
+        <label>Name : <span id="name"></span></label>
+        <label>Username : <span id="username"></span></label>
+
+        <!-- display list of specialties with add and delete button -->
+        <h2>Specialties</h2>
+        <ul id="specialtiesList"></ul>
+        <input type="text" id="newSpecialty" placeholder="Add new specialty">
+        <button type="submit">Login</button>
+        <button type="button" onclick="addSpecialty()">Add Specialty</button>
+    </form>
+
+    <script src="teacher_profile.js"></script>
+</body>
