@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark grey text color */
+    margin: 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+}
+
+h2 {
+    color: #555; /* Dark grey heading color */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+/*Navigation bar styling*/
+/* Style for the navigation menu */
+.navigation {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display menu items in a row */
+}
+
+.navbar li {
+    margin-right: 20px; /* Adjust spacing between menu items */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}

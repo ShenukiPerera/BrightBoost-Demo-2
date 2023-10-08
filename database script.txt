@@ -22,6 +22,12 @@ CREATE TABLE student (
     PRIMARY KEY(studentid,email)
 );
 
+CREATE TABLE speciality (
+    staffid INT,
+    speciality VARCHAR(100),
+    PRIMARY KEY (staffid, speciality)
+)
+
 
 
 
@@ -32,3 +38,8 @@ VALUES ( 1, "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gm
 INSERT INTO student ( studentid, name, username, password, fees, contactnumber, email)
 VALUES ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
        ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");
+
+INSERT INTO speciality ( staffid, speciality)
+VALUES (1, 'MATHS'),
+	   (1, 'ENGLISH'),
+       (1, 'GEOGRAPHY');
