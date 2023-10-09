@@ -39,12 +39,9 @@ CREATE TABLE timetable (
 
 CREATE TABLE speciality (
     staffid INT,
-    speciality VARCHAR(100),
-    PRIMARY KEY (staffid, speciality)
-)
-
-
-
+    speciality VARCHAR(255) NOT NULL,
+    FOREIGN KEY (staffid) REFERENCES staff(staffid)
+);
 
 >>>>>>> 344b01c37d02a355e288754383fc5154ccfd3b85
 INSERT INTO staff ( staffid, name, username, password, role, contactnumber, email)
@@ -55,6 +52,7 @@ INSERT INTO student ( studentid, name, username, password, fees, contactnumber, 
 VALUES ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
        ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 INSERT INTO timetable (username,day, session)
 VALUES ('Monday', 'Session 1'),
@@ -94,3 +92,7 @@ VALUES (1, 'MATHS'),
 	   (1, 'ENGLISH'),
        (1, 'GEOGRAPHY');
 >>>>>>> 344b01c37d02a355e288754383fc5154ccfd3b85
+=======
+INSERT INTO speciality (staffid, speciality)
+VALUES (1, 'Biology');
+>>>>>>> Stashed changes
