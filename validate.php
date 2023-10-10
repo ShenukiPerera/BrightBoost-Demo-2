@@ -1,5 +1,5 @@
 <?php
-require_once ("settings.php");
+require_once ("settings.php"); 
 
 // Create a connection
 $conn = @mysqli_connect($servername, $username, $password, $dbname);
