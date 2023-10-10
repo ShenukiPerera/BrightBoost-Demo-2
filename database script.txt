@@ -18,7 +18,7 @@ CREATE TABLE student (
     password VARCHAR(30) NOT NULL,
     fees DECIMAL(10,2),
     contactnumber int NOT NULL,
-    email VARCHAR(20),
+    email VARCHAR(100),
     PRIMARY KEY(studentid,email)
 );
 
