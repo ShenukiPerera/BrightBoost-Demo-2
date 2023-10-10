@@ -7,10 +7,10 @@ CREATE TABLE staff (
     password VARCHAR(10) NOT NULL,
     role VARCHAR(10) NOT NULL,
     contactnumber int NOT NULL,
-    email VARCHAR(255),
+    email VARCHAR(100),
     PRIMARY KEY(staffid,email)
 );
-
+ALTER TABLE staff MODIFY email VARCHAR(100);
 CREATE TABLE student (
 	studentid INT,
     name VARCHAR(255) NOT NULL,
@@ -18,19 +18,32 @@ CREATE TABLE student (
     password VARCHAR(30) NOT NULL,
     fees DECIMAL(10,2),
     contactnumber int NOT NULL,
-    email VARCHAR(255),
+    email VARCHAR(20),
     PRIMARY KEY(studentid,email)
 );
+<<<<<<< HEAD
+ALTER TABLE student MODIFY email VARCHAR(100);
+CREATE TABLE timetable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) NOT NULL,
+    day VARCHAR(20) NOT NULL,
+    session VARCHAR(20) NOT NULL
+);
+CREATE TABLE timetable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) NOT NULL,
+    day VARCHAR(20) NOT NULL,
+    session VARCHAR(20) NOT NULL
+);
+=======
 
 CREATE TABLE speciality (
     staffid INT,
-    speciality VARCHAR(100),
-    PRIMARY KEY (staffid, speciality)
-)
+    speciality VARCHAR(255) NOT NULL,
+    FOREIGN KEY (staffid) REFERENCES staff(staffid)
+);
 
-
-
-
+>>>>>>> 344b01c37d02a355e288754383fc5154ccfd3b85
 INSERT INTO staff ( staffid, name, username, password, role, contactnumber, email)
 VALUES ( 1, "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gmail.com"),
        ( 2, "Amy Smith", "staff01", "staff01", "teacher", '0412345999', "amysmith@gmail.com");
@@ -39,7 +52,47 @@ INSERT INTO student ( studentid, name, username, password, fees, contactnumber, 
 VALUES ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
        ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");
 
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+INSERT INTO timetable (username,day, session)
+VALUES ('Monday', 'Session 1'),
+       ('Tuesday', 'Session 2'),
+       ('Wednesday', 'Session 1');
+       
+UPDATE timetable
+SET username = 'rameshbrown'
+WHERE day = 'Monday' AND session = 'Session 1';
+
+UPDATE timetable
+SET username = 'rameshbrown'
+WHERE day = 'Tuesday' AND session = 'Session 2';
+
+UPDATE timetable
+SET username = 'rameshbrown'
+WHERE day = 'Wednesday' AND session = 'Session 1';
+
+INSERT INTO timetable (username, day, session)
+VALUES ('rameshbrown', 'Monday', 'Session 1'),
+       ('rameshbrown', 'Tuesday', 'Session 2'),
+       ('rameshbrown', 'Wednesday', 'Session 1');
+ALTER TABLE staff
+ADD COLUMN expertise VARCHAR(255);
+
+UPDATE staff
+SET expertise = 'Biology'
+WHERE username = 'staff01';
+
+UPDATE staff
+SET expertise = 'Physics'
+WHERE username = 'admin';
+
+=======
 INSERT INTO speciality ( staffid, speciality)
 VALUES (1, 'MATHS'),
 	   (1, 'ENGLISH'),
        (1, 'GEOGRAPHY');
+>>>>>>> 344b01c37d02a355e288754383fc5154ccfd3b85
+=======
+INSERT INTO speciality (staffid, speciality)
+VALUES (1, 'Biology');
+>>>>>>> Stashed changes
