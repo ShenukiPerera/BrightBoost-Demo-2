@@ -42,8 +42,32 @@ CREATE TABLE teachersessions (
     FOREIGN KEY (staffid) REFERENCES staff(staffid)
     FOREIGN KEY (speciality) REFERENCES speciality(speciality)
     FOREIGN KEY (date) REFERENCES timetable(date)
-    FOREIGN KEY (speciality) REFERENCES timetable(speciality)
+    FOREIGN KEY (time) REFERENCES timetable(time)
 )
+
+CREATE TABLE session (
+	sessionid INT auto_increment,
+    date DATE,
+    time TIME,
+    PRIMARY KEY (sessionid),
+    FOREIGN KEY (date) REFERENCES timetable(date),
+    FOREIGN KEY (time) REFERENCES timetable(time)
+);
+
+CREATE TABLE queue (
+	queueid INT auto_increment,
+	sessionid INT ,
+    PRIMARY KEY (queueid),
+    FOREIGN KEY (sessionid) REFERENCES session(sessionid)
+);
+
+CREATE TABLE studentsession (
+	studentid INT ,
+	sessionid INT ,
+    FOREIGN KEY (sessionid) REFERENCES session(sessionid),
+    FOREIGN KEY (studentid) REFERENCES student(studentid)
+    
+);
 
 INSERT INTO staff ( staffid, name, username, password, role, contactnumber, email)
 VALUES ( 1, "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gmail.com"),
