@@ -1,19 +1,20 @@
 <?php
-require_once ("settings.php"); 
+require_once ("settings.php");
 
 // Create a connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = @mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
 session_start();
 
 // Retrieve user input
-$username = isset($_POST["username"]) ? $_POST["username"] : "";
-$password = isset($_POST["password"]) ? $_POST["password"] : "";
-$role = isset($_POST["role"]) ? $_POST["role"] : "";
+$username = $_POST["username"];
+$password = $_POST["password"];
+$role = $_POST["role"];
 
 // SQL query to validate user credentials
 if ($role == "student"){
@@ -43,9 +44,9 @@ if ($result->num_rows > 0) {
     if ($role == "admin") {
         header("Location: Admin/admin_home.html");
     } elseif ($role == "student") {
-        header("Location: Student/student_dashboard.html");
+        header("Location: Student/student.php");
     } elseif ($role == "teacher") {
-        header("Location: Teacher/teacher_home.php");
+        header("Location: Teacher/teacher_home.html");
     } else {
         // Handle unknown roles here
         echo '<script>alert("Error: Unknown role. Please contact support.");</script>';

@@ -78,9 +78,9 @@ $conn->close();
     <section class="navigation">
         <nav class="navbar" role="navigation">
             <ul>
-                <li><a href="teacher_home.html">Home</a></li>
+                <li><a href="teacher_home.php">Home</a></li>
                 <li><a href="teacher_profile.html">Profile</a></li>
-                <li><a href="">Session</a></li>              
+                <li><a href="teacher_session.php">Session</a></li>             
             </ul>
         </nav>
     </section>
