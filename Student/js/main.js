@@ -40,7 +40,7 @@ document.getElementById('view-timetable-link').addEventListener('click', functio
             timetableSection.textContent = 'No sessions found.';
         }
     })
-    .catch(error => {
+  c.catch(error => {
         console.error('Error:', error);
     });
 });
