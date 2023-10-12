@@ -17,4 +17,9 @@
         </nav>
     </section>
 
+    <h1>Upcoming Sessions</h1>
+
+    <?php include 'fetch_session.php' ?>
+
 </body>
+</html>
