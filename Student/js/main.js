@@ -1,3 +1,10 @@
+// Function to display error messages
+function displayError(sectionId, message) {
+    const section = document.getElementById(sectionId);
+    section.innerHTML = `<p class="error-message">${message}</p>`;
+}
+
+// Fetch and display timetable data
 document.getElementById('view-timetable-link').addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -7,7 +14,12 @@ document.getElementById('view-timetable-link').addEventListener('click', functio
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         // Display timetable data on the dashboard
         const timetableSection = document.getElementById('timetable-section');
@@ -40,12 +52,16 @@ document.getElementById('view-timetable-link').addEventListener('click', functio
             timetableSection.textContent = 'No sessions found.';
         }
     })
-  c.catch(error => {
+    .catch(error => {
         console.error('Error:', error);
+        displayError('timetable-section', 'Error fetching timetable data. Please try again later.');
     });
 });
 
 
+
+
+// Fetch and display the session queue
 document.getElementById('join-queue-link').addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -56,16 +72,22 @@ document.getElementById('join-queue-link').addEventListener('click', function(e)
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        // Display session queue data on the dashboard
         document.getElementById('queue-section').innerHTML = data;
     })
     .catch(error => {
         console.error('Error:', error);
+        displayError('queue-section', 'Error joining the queue. Please try again later.');
     });
 });
 
+// Fetch and display tutor expertise
 document.getElementById('view-expertise-link').addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -75,11 +97,15 @@ document.getElementById('view-expertise-link').addEventListener('click', functio
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        // Display tutor expertise data on the dashboard
         const expertiseSection = document.getElementById('expertise-section');
-        expertiseSection.innerHTML = ''; // Clear previous content
+        expertiseSection.innerHTML = '';
 
         if (data && data.length > 0) {
             const ul = document.createElement('ul');
@@ -91,8 +117,11 @@ document.getElementById('view-expertise-link').addEventListener('click', functio
     })
     .catch(error => {
         console.error('Error:', error);
+        displayError('expertise-section', 'Error fetching tutor expertise data. Please try again later.');
     });
 });
+
+// Fetch and display student statistics
 document.getElementById('view-statistics-link').addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -102,11 +131,15 @@ document.getElementById('view-statistics-link').addEventListener('click', functi
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
-        // Display student statistics on the dashboard
         const statisticsSection = document.getElementById('statistics-section');
-        statisticsSection.innerHTML = ''; // Clear previous content
+        statisticsSection.innerHTML = '';
 
         if (data && data.length > 0) {
             const ul = document.createElement('ul');
@@ -118,10 +151,12 @@ document.getElementById('view-statistics-link').addEventListener('click', functi
     })
     .catch(error => {
         console.error('Error:', error);
+        displayError('statistics-section', 'Error fetching student statistics. Please try again later.');
     });
 });
 
-// Fetch and display the list of available learning materials
+
+/// Fetch and display the list of available learning materials
 function listLearningMaterials() {
     fetch('php/access_materials.php', {
         method: 'GET',
@@ -129,7 +164,12 @@ function listLearningMaterials() {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         const materialsSection = document.getElementById('materials-section');
         materialsSection.innerHTML = ''; // Clear previous content
@@ -151,6 +191,7 @@ function listLearningMaterials() {
     })
     .catch(error => {
         console.error('Error:', error);
+        displayError('materials-section', 'Error fetching learning materials. Please try again later.');
     });
 }
 
