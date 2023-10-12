@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
     } elseif ($role == "student") {
         header("Location: Student/student_dashboard.html");
     } elseif ($role == "teacher") {
-        header("Location: Teacher/teacher_home.html");
+        header("Location: Teacher/teacher_home.php");
     } else {
         // Handle unknown roles here
         echo '<script>alert("Error: Unknown role. Please contact support.");</script>';
