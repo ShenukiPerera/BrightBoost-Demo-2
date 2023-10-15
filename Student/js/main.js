@@ -53,8 +53,7 @@ document.getElementById('view-timetable-link').addEventListener('click', functio
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        displayError('timetable-section', 'Error fetching timetable data. Please try again later.');
+        handleFetchError('timetable-section', error);
     });
 });
 
