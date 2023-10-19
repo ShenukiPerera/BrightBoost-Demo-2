@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Create Timetable Entry</title>
@@ -25,7 +25,7 @@
 // database connection details
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "brightboost_db";
 
 // Create a connection

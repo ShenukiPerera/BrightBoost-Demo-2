@@ -32,7 +32,7 @@
 // databse connection details
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "brightboost_db";
 
 // Creating database connection
