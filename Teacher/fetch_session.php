@@ -18,7 +18,22 @@ $sql_sessions = "SELECT a.date, a.time, a.speciality , b.sessionid
 $result = $conn->query($sql_sessions);
 
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['reject_session']) && isset($_POST['date']) && isset($_POST['time'])) {
+        $rejectedDate = $_POST['date'];
+        $rejectedTime = $_POST['time'];
+
+        // Delete the row from teachersessions table
+        $updateSQL = "UPDATE teachersessions SET staffid = '' WHERE staffid = '$staffid' AND date = '$rejectedDate' AND time = '$rejectedTime'";
+        $conn->query($updateSQL);
+
+        // Redirect to the same page after handling the rejection
+        header("Location: teacher_session.php");
+        exit();
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,13 +50,20 @@ $result = $conn->query($sql_sessions);
 if ($result->num_rows > 0) {
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
-        $link = 'record_session.php?date=' . $row['sessionid']. $row['date'] . '&time=' . $row['time'] . '&speciality=' . $row['speciality'];
+        $link = 'record_session.php?date=' . $row['date'] . '&time=' . $row['time'] . '&speciality=' . $row['speciality']. '&sessionid='.$row['sessionid'];
         echo '<a href="' . $link . '" class="session-link">';
         echo '<div class="session-card">';
         echo '<p>SessionID: ' . $row['sessionid'] . '</p>';
         echo '<p>Date: ' . $row['date'] . '</p>';
         echo '<p>Time: ' . $row['time'] . '</p>';
         echo '<p>Specialty: ' . $row['speciality'] . '</p>';
+
+        // Add Reject form
+        echo '<form action="" method="post" class="reject-form">';
+        echo '<input type="hidden" name="date" value="' . $row['date'] . '">';
+        echo '<input type="hidden" name="time" value="' . $row['time'] . '">';
+        echo '<input type="submit" name="reject_session" value="Reject" class="reject-button">';
+        echo '</form>';
         echo '</div>';
         echo '</a>';
     }

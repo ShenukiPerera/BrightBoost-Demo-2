@@ -20,7 +20,7 @@
 // Include your database connection code here
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "brightboost_db";
 
 // Create a connection

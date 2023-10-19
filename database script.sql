@@ -2,9 +2,9 @@ CREATE DATABASE brightboost_db;
 
 CREATE TABLE staff (
 	staffid INT AUTO_INCREMENT,
-    username varchar(10) UNIQUE,
+    username varchar(50) UNIQUE,
     name VARCHAR(255) NOT NULL,
-    password VARCHAR(10) NOT NULL,
+    password VARCHAR(50) NOT NULL,
     role VARCHAR(10) NOT NULL,
     contactnumber int NOT NULL,
     email VARCHAR(100),
@@ -12,10 +12,10 @@ CREATE TABLE staff (
 );
 
 CREATE TABLE student (
-	studentid INT,
+	studentid INT AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    username varchar(30) UNIQUE,    
-    password VARCHAR(30) NOT NULL,
+    username varchar(50) UNIQUE,    
+    password VARCHAR(50) NOT NULL,
     fees DECIMAL(10,2),
     contactnumber int NOT NULL,
     email VARCHAR(100),
@@ -23,7 +23,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE speciality (
-    staffid INT,
+    staffid INT AUTO_INCREMENT,
     speciality VARCHAR(255) NOT NULL,
     FOREIGN KEY (staffid) REFERENCES staff(staffid)
 );
@@ -62,7 +62,7 @@ CREATE TABLE queue (
 );
 
 CREATE TABLE studentsession (
-	studentid INT ,
+	studentid INT auto_increment,
 	sessionid INT ,
     FOREIGN KEY (sessionid) REFERENCES session(sessionid),
     FOREIGN KEY (studentid) REFERENCES student(studentid)
@@ -170,3 +170,67 @@ INSERT INTO teachersessions (date, time, staffid, speciality) VALUES
     ('2023-11-07', '16:00:00', 6, 'Biology'),
     ('2023-11-07', '17:00:00', 7, 'Chemistry'),
     ('2023-11-07', '18:00:00', 7, 'Geography');
+
+-- Insert data into the session table
+INSERT INTO session (date, time)
+VALUES
+    ('2023-11-01', '15:00:00'),
+    ('2023-11-01', '16:00:00'),
+    ('2023-11-01', '17:00:00'),
+    ('2023-11-01', '18:00:00'),
+    ('2023-11-02', '15:00:00'),
+    ('2023-11-02', '16:00:00'),
+    ('2023-11-02', '17:00:00'),
+    ('2023-11-02', '18:00:00'),
+    ('2023-11-03', '15:00:00'),
+    ('2023-11-03', '16:00:00'),
+    ('2023-11-03', '17:00:00'),
+    ('2023-11-03', '18:00:00'),
+    ('2023-11-04', '15:00:00'),
+    ('2023-11-04', '16:00:00'),
+    ('2023-11-04', '17:00:00'),
+    ('2023-11-04', '18:00:00'),
+    ('2023-11-05', '15:00:00'),
+    ('2023-11-05', '16:00:00'),
+    ('2023-11-05', '17:00:00'),
+    ('2023-11-05', '18:00:00'),
+    ('2023-11-06', '15:00:00'),
+    ('2023-11-06', '16:00:00'),
+    ('2023-11-06', '17:00:00'),
+    ('2023-11-06', '18:00:00'),
+    ('2023-11-07', '15:00:00'),
+    ('2023-11-07', '16:00:00'),
+    ('2023-11-07', '17:00:00'),
+    ('2023-11-07', '18:00:00');
+
+    -- Assuming sessionids range from 1 to 28
+INSERT INTO queue (sessionid)
+VALUES
+    (1),
+    (2),
+    (3),
+    (4),
+    (5),
+    (6),
+    (7),
+    (8),
+    (9),
+    (10),
+    (11),
+    (12),
+    (13),
+    (14),
+    (15),
+    (16),
+    (17),
+    (18),
+    (19),
+    (20),
+    (21),
+    (22),
+    (23),
+    (24),
+    (25),
+    (26),
+    (27),
+    (28);

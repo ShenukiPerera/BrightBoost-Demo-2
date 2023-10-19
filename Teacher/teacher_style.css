@@ -17,6 +17,7 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
 }
 
+
 h2 {
     color: #555; /* Dark grey heading color */
 }
@@ -106,11 +107,51 @@ ul {
 }
 
 .session-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    border: 1px solid lightgray;
     padding: 10px;
     margin-bottom: 10px;
+} 
+
+.session-card p{
+    text-decoration: none;
 }
+
+.reject-form {
+    max-width: 10px;
+    margin: 10px auto;
+    background-color: f4f4f4; /* White background */
+    padding: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    align-items: left;
+}
+
+.reject-button {
+    background-color: red; 
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reject-button:hover{
+    background-color: rgba(255, 0, 0, 0.675);
+}
+
+.submenu ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px;
+}
+
+.submenu:hover ul {
+    display: block;
+}
+
+
+
 
 
 
