@@ -1,24 +1,78 @@
 <?php
+require_once("../settings.php");
+
+$conn = @mysqli_connect($servername, $username, $password, $dbname);
 session_start();
-include('db_config.php');
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Fetch the timetable data from the database
-    try {
-        $query = "SELECT * FROM sessions";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute();
-        $timetableData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Get today's date in the format YYYY-MM-DD
+$todayDate = date("Y-m-d");
 
-        // Return the timetable data as JSON
-        header('Content-Type: application/json');
-        echo json_encode($timetableData);
-    } catch (PDOException $e) {
-        // Handle database error
-        echo json_encode(['error' => 'Database error']);
+// Fetch sessions from the timetable table
+$sql_timetable = "SELECT a.date, a.time , c.name, b.speciality
+                  FROM timetable as a
+                  INNER JOIN teachersessions as b on b.date = a.date and b.time = a.time
+                  INNER JOIN staff as c on c.staffid = b.staffid  
+                  WHERE a.date >= '$todayDate'
+                  ORDER BY a.date, a.time";
+$result_timetable = $conn->query($sql_timetable);
+$sessions = array();
+
+
+// Process timetable data and display
+if ($result_timetable->num_rows > 0) {
+    // Initialize an array to store sessions grouped by day
+    $sessionsByDay = array();
+
+    while ($row = $result_timetable->fetch_assoc()) {
+        // Convert the date to the day of the week
+        $dayOfWeek = date('l', strtotime($row['date']));
+
+        // Store the session in the array grouped by day
+        $sessionsByDay[$dayOfWeek][] = $row;
     }
 } else {
-    // Handle unsupported HTTP methods
-    echo json_encode(['error' => 'Unsupported method']);
+    echo '<p>No sessions found in the timetable.</p>';
+}
+
+// // Send JSON response
+// header('Content-Type: application/json');
+// echo json_encode($sessions);
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="teacher_style.css">
+    <title>Teacher-timetable</title>
+</head>
+<body>
+<?php
+// Display sessions for each day
+foreach ($sessionsByDay as $day => $sessions) {
+    echo '<div class="day-column">';
+    echo '<h3>' . $day . '</h3>';
+
+    foreach ($sessions as $session) {
+        echo '<div class="session-card">';
+        echo '<p>Date: ' . $session['date'] . '</p>';
+        echo '<p>Time: ' . $session['time'] . '</p>';
+        echo '<p>Teacher: ' . $session['name'] . '</p>';
+        echo '<p>Subject: ' . $session['speciality'] . '</p>';
+        echo '</div>';
+    }
+
+    echo '</div>';
 }
 ?>
+
+</body>
+</html>
+
