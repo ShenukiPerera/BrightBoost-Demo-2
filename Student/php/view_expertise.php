@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db_config.php');
+require_once ("../settings.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Fetch tutor expertise data from the database

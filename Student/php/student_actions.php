@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db_config.php'; // Include the database configuration
+require_once ("../settings.php"); // Include the database configuration
 
 // Function to handle viewing the timetable
 function viewTimetable() {
