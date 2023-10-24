@@ -15,8 +15,8 @@
             <li><a href="teacher_profile.php">Profile</a></li>
             <li><a href="teacher_session.php">Session</a></li>
             <li class="submenu">
-                    <li><a href="#" onclick="markAttendance()">Mark Attendance</a></li>
-                    <li><a href="#" onclick="viewQuestions()">View Questions</a></li>
+                    <!-- <li><a href="#" onclick="markAttendance()">Mark Attendance</a></li> -->
+                <li><a href="#" onclick="viewQuestions()">View Questions</a></li>
             </li>
         </ul>
     </nav>
@@ -50,17 +50,13 @@ if (isset($_GET['date']) && isset($_GET['time']) && isset($_GET['speciality']) )
     echo '<p>Time: ' . $time . '</p>';
     echo '<p>Specialty: ' . $speciality . '</p>';
     echo '</div>';
-    
-    // Display the form for marking attendance
-    echo '<div id="mark-attendance-form">';
-    echo '<h2>Mark Attendance</h2>';
+
     echo '<form onsubmit="submitAttendanceForm(); return false;">';
     echo '<label for="studentId">Enter Student ID:</label>';
     echo '<input type="text" id="studentId" required>';
     echo '<button type="submit">Mark Attendance</button>';
     echo '</form>';
-    echo '</div>';
-    
+
     // Display the table for marked students
     echo '<div id="marked-students">';
     echo '<h2>Marked Students</h2>';
@@ -77,6 +73,39 @@ if (isset($_GET['date']) && isset($_GET['time']) && isset($_GET['speciality']) )
     echo '<p>No session details provided.</p>';
 }
 
+if (isset($_GET['studentid']) && isset($_GET['sessionid'])) {
+    $studentId = $_GET['studentid'];
+    $sessionId = $_GET['sessionid'];
+
+    $checkStdId = "SELECT * FROM student WHERE studentid = '$studentId'";
+    $checkStdIdResult = $conn->query($checkStdId);
+
+    if ($checkStdIdResult->num_rows > 0){
+        // Check if the student ID and session ID combination already exists
+        $checkSql = "SELECT * FROM studentsession WHERE studentid = '$studentId' AND sessionid = '$sessionId'";
+        $checkResult = $conn->query($checkSql);
+
+
+        if ($checkResult->num_rows === 0) {
+            // Insert a new record for the student ID and session ID combination
+            $insertSql = "INSERT INTO studentsession (studentid, sessionid) VALUES ('$studentId', '$sessionId')";
+            $insertResult = $conn->query($insertSql);
+
+            if ($insertResult) {
+                echo "Attendance marked for student $studentId";
+            } else {
+                echo "Error marking attendance: " . $conn->error;
+            }
+        } else {
+            echo "Attendance already marked for student $studentId". $checkStdId;
+        }
+    }else {echo "Invalid Student ID";
+        unset($studentId);
+    }
+
+    exit; // Exit to prevent further output in this case
+}
+
 function getMarkedStudents($conn, $sessionid) {
     $markedStudents = array();
     $sql = "SELECT studentid FROM studentsession WHERE sessionid = $sessionid";
@@ -89,6 +118,7 @@ function getMarkedStudents($conn, $sessionid) {
     }
     return $markedStudents;
 }
+
 ?>
 
 <!-- JavaScript to handle marking attendance -->
