@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db_config.php');
+require_once ("../settings.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ensure the student is authenticated and retrieve their ID from the session
