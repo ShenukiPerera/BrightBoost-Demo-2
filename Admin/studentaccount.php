@@ -26,7 +26,7 @@
             <button type="submit">Create Student Account</button><br><br>
         </form>
 
-        <a href="admin_home.html">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
+        <a href="admin_home.php">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
     </div>
 <?php
 // databse connection details

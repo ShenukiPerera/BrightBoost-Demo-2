@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 // Function to retrieve and display user data
 function displayUserData($conn) {
-    $sql = "SELECT * FROM users"; // Replace "users" with the actual table name for user data
+    $sql = "SELECT * FROM staff";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@ $conn->close();
     <div class="container">
         <h1>Maintain User Data</h1>
 
-        <a href="admin_home.html">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
+        <a href="admin_home.php">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
     </div>
 </body>
 </html>
