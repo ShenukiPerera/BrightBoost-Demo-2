@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $dbname = "brightboost_db";
 
 	$conn =  @mysqli_connect
