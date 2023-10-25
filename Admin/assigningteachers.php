@@ -18,11 +18,7 @@
     </div>
 <?php
 // Include your database connection code here
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "brightboost_db";
-
+require_once ("../settings.php");
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
