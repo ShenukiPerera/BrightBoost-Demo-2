@@ -24,7 +24,7 @@ CREATE TABLE student (
 
 CREATE TABLE speciality (
     staffid INT AUTO_INCREMENT,
-    speciality VARCHAR(255) NOT NULL,
+    speciality VARCHAR(100) NOT NULL,
     FOREIGN KEY (staffid) REFERENCES staff(staffid)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE teachersessions (
     date DATE,
     time TIME,
     staffid INT,
-    speciality VARCHAR(255),
+    speciality VARCHAR(100),
     FOREIGN KEY (staffid) REFERENCES staff(staffid)
     FOREIGN KEY (speciality) REFERENCES speciality(speciality)
     FOREIGN KEY (date) REFERENCES timetable(date)

@@ -97,13 +97,13 @@ if (isset($_GET['studentid']) && isset($_GET['sessionid'])) {
                 echo "Error marking attendance: " . $conn->error;
             }
         } else {
-            echo "Attendance already marked for student $studentId". $checkStdId;
+            echo "Attendance already marked for student $studentId";
         }
     }else {echo "Invalid Student ID";
         unset($studentId);
     }
 
-    exit; // Exit to prevent further output in this case
+    exit; 
 }
 
 function getMarkedStudents($conn, $sessionid) {
