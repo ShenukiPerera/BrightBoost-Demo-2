@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     echo "Login successful!";
     // Redirect based on role
     if ($role == "admin") {
-        header("Location: Admin/admin_home.html");
+        header("Location: Admin/admin_home.php");
     } elseif ($role == "student") {
         header("Location: Student/student_dashboard.php");
     } elseif ($role == "teacher") {

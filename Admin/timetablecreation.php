@@ -5,28 +5,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create Timetable Entry</h1>
+        <h1>Creating Sessions for Timetable</h1>
         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label for="day">Day:</label>
-            <input type="text" name="day" placeholder="Day" required><br>
-            <label for="time">Time:</label>
-            <input type="text" name="time" placeholder="Time" required><br>
+            <label for="date">Date:</label>
+            <input type="date" name="date" required><br>
+            <label for="datetime_local">Time:</label>
+            <input type="time" name="time" required><br>
+            <label for="staffid">StaffID:</label>
+            <input type="number" name="staffid" required><br>
             <label for="subject">Subject:</label>
-            <input type="text" name="subject" placeholder="Subject" required><br>
-            <label for="teacher">Teacher:</label>
-            <input type="text" name="teacher" placeholder="Teacher" required><br>
-            <!-- Add more input fields for other timetable information -->
-            <button type="submit">Create Timetable Entry</button>
+            <input type="text" name="subject" required><br>
+            <button type="submit">Create Timetable</button>
         </form>
 
         <a href="admin_home.html">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
     </div>
     <?php
 // database connection details
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "brightboost_db";
+require_once ("../settings.php");
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,27 +33,54 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
+//Query to display the speciality table data
+$specialitytabledata = "SELECT * FROM speciality";
+$specialitytableresult = $conn->query($specialitytabledata);
+//Displaying table data
+if ($specialitytableresult->num_rows > 0)
+{
+      echo "<table>";
+      echo "<tr><th>StaffID</th><th>Speciality</th></tr>";
+      while ($row = $specialitytableresult->fetch_assoc())
+      {
+           echo "<tr>";
+           echo "<td>" . $row["staffid"] . "</td>";
+           echo "<td>" . $row["speciality"] . "</td>";
+           echo "</tr>";
+      }
+      echo "</table>";
+} 
+else
+{
+     echo "No data found in the database.";
+}
+
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     // Retrieve form data
-    $day = $_POST["day"];
+    $date = $_POST["date"];
     $time = $_POST["time"];
+    $staffid= $_POST["staffid"];
     $subject = $_POST["subject"];
-    $teacher = $_POST["teacher"];
-    // Add more fields as needed
-
+ 
     // SQL query to insert timetable data into the database
-    $sql = "INSERT INTO timetable (day, time, subject, teacher) VALUES ('$day', '$time', '$subject', '$teacher')";
-    
-    if ($conn->query($sql) === TRUE)
+    $timetablesql = "INSERT INTO timetable (date, time) VALUES ('$date', '$time')";
+    $teachersessionstable= "INSERT INTO teachersessions (date, time, staffid, speciality) VALUES ('$date', '$time', $staffid, '$subject')";
+    $sessiontable= "INSERT INTO session (date, time) VALUES('$date', '$time')";
+    if ($conn->query($timetablesql) === TRUE && $conn->query($teachersessionstable) === TRUE && $conn->query($sessiontable) === TRUE)
     {
         echo "Timetable entry created successfully!";
     } 
     else
     {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $timetablesql . "<br>" . $conn->error;
+        echo "Error: " . $teachersessionstable . "<br>" . $conn->error;
+        echo "Error: " . $sessiontable . "<br>" . $conn->error;
+
+
     }
+    
 }
 
 // Closing the database connection
@@ -65,3 +88,5 @@ $conn->close();
 ?>
 </body>
 </html>
+
+

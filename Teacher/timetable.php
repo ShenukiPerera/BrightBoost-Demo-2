@@ -14,8 +14,8 @@ $todayDate = date("Y-m-d");
 // Fetch sessions from the timetable table
 $sql_timetable = "SELECT a.date, a.time , c.name, b.speciality
                   FROM timetable as a
-                  INNER JOIN teachersessions as b on b.date = a.date and b.time = a.time
-                  INNER JOIN staff as c on c.staffid = b.staffid  
+                  LEFT OUTER JOIN teachersessions as b on b.date = a.date and b.time = a.time
+                  LEFT OUTER JOIN staff as c on c.staffid = b.staffid  
                   WHERE a.date >= '$todayDate'
                   ORDER BY a.date, a.time";
 $result_timetable = $conn->query($sql_timetable);
