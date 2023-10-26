@@ -195,3 +195,17 @@ INSERT INTO teachersessions (date, time, staffid, speciality) VALUES
     ('2023-11-07', '16:00:00', 6, 'Biology'),
     ('2023-11-07', '17:00:00', 7, 'Chemistry'),
     ('2023-11-07', '18:00:00', 7, 'Geography');
+
+
+CREATE TABLE learning_materials (
+  `material_id` int NOT NULL AUTO_INCREMENT,
+  `material_name` varchar(255) NOT NULL,
+  `material_link` varchar(255) NOT NULL,
+  PRIMARY KEY (`material_id`)
+) 
+
+INSERT INTO learning_materials (`material_id`, `material_name`, `material_link`) VALUES
+(1, 'Mathematics Textbook', 'https://example.com/math_textbook.pdf'),
+(2, 'Physics Lecture Notes', 'https://example.com/physics_notes.pdf'),
+(3, 'Literature Study Guide', 'https://example.com/lit_study_guide.pdf');
+
