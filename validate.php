@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
     if ($role == "admin") {
         header("Location: Admin/admin_home.php");
     } elseif ($role == "student") {
-        header("Location: Student/student_dashboard.html");
+        header("Location: Student/student_dashboard.php");
     } elseif ($role == "teacher") {
         header("Location: Teacher/teacher_home.php");
     } else {
