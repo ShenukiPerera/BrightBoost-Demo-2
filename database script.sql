@@ -198,14 +198,14 @@ INSERT INTO teachersessions (date, time, staffid, speciality) VALUES
 
 
 CREATE TABLE learning_materials (
-  `material_id` int NOT NULL AUTO_INCREMENT,
-  `material_name` varchar(255) NOT NULL,
-  `material_link` varchar(255) NOT NULL,
-  PRIMARY KEY (`material_id`)
-) 
+  material_id int NOT NULL AUTO_INCREMENT,
+  material_name varchar(255) NOT NULL,
+  material_link varchar(255) NOT NULL,
+  PRIMARY KEY (material_id)
+) ;
 
-INSERT INTO learning_materials (`material_id`, `material_name`, `material_link`) VALUES
-(1, 'Mathematics Textbook', 'https://example.com/math_textbook.pdf'),
-(2, 'Physics Lecture Notes', 'https://example.com/physics_notes.pdf'),
-(3, 'Literature Study Guide', 'https://example.com/lit_study_guide.pdf');
+INSERT INTO learning_materials (material_id, material_name, material_link) VALUES
+(1, 'Mathematics Textbook', 'https://ncertbooks.solutions/ncert-books-class-10/maths/'),
+(2, 'Physics Textbook', 'https://www.ncertbooks.guru/ncert-books-class-10-science/'),
+(3, 'Literature Textbook', 'https://www.saralstudy.com/ncert-ebook-pdf-for-class-10-interact-in-english-literature-reader');
 
