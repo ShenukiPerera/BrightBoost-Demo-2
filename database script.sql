@@ -1,4 +1,4 @@
-CREATE DATABASE brightboost_db;
+CREATE DATABASE brightboosttest_db;
 
 CREATE TABLE staff (
 	staffid INT AUTO_INCREMENT,
@@ -80,8 +80,33 @@ VALUES ( 1, "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gm
        (8, 'SophiaJohnson', 'Sophia Johnson', 'SophiaJohnson', 'Teacher', 987654321, 'SophiaJohnson@google.com');
 
 INSERT INTO student ( studentid, name, username, password, fees, contactnumber, email)
-VALUES ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
-       ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");
+VALUES  ( 100, "John Wick", "johnwick", "johnwick", 1000.00, '0412378912', "johnwick@gmail.com"),
+        ( 101, "Ramesh Brown", "rameshbrown", "rameshbrown", 1200.00, '0456789012', "rameshbrown@gmail.com");
+        (102, "Sarah Johnson", "sarahjohnson", "sarahjohnson", 950.00, '0369874123', "sarahjohnson@gmail.com"),
+        (103, "Michael Smith", "michaelsmith", "michaelsmith", 1100.00, '0498761234', "michaelsmith@gmail.com"),
+        (104, "Emily Davis", "emilydavis", "emilydavis", 1050.00, '0321987654', "emilydavis@gmail.com"),
+        (105, "David Wilson", "davidwilson", "davidwilson", 1150.00, '0452317890', "davidwilson@gmail.com"),
+        (106, "Linda Martinez", "lindamartinez", "lindamartinez", 980.00, '0412345678', "lindamartinez@gmail.com");
+        (107, "William Thompson", "williamthompson", "williamthompson", 1120.00, '0356789012', "williamthompson@gmail.com"),
+        (108, "Olivia Harris", "oliviaharris", "oliviaharris", 990.00, '0451298760', "oliviaharris@gmail.com"),
+        (109, "James Adams", "jamesadams", "jamesadams", 1050.00, '0398765432', "jamesadams@gmail.com"),
+        (110, "Sophia White", "sophiawhite", "sophiawhite", 1180.00, '0487654321', "sophiawhite@gmail.com"),
+        (111, "Benjamin Turner", "benjaminturner", "benjaminturner", 1020.00, '0356789123', "benjaminturner@gmail.com"),
+        (112, "Ava Robinson", "avarobinson", "avarobinson", 950.00, '0412398765', "avarobinson@gmail.com"),
+        (113, "Jacob Garcia", "jacobgarcia", "jacobgarcia", 1210.00, '0456781230', "jacobgarcia@gmail.com"),
+        (114, "Mia Perez", "miaperez", "miaperez", 980.00, '0321987654', "miaperez@gmail.com"),
+        (115, "Elijah Martinez", "elijahmartinez", "elijahmartinez", 1130.00, '0412345678', "elijahmartinez@gmail.com"),
+        (116, "Charlotte Lewis", "charlottelewis", "charlottelewis", 1000.00, '0398765421', "charlottelewis@gmail.com");
+        (117, "Alexander Young", "alexanderyoung", "alexanderyoung", 1080.00, '0356790123', "alexanderyoung@gmail.com"),
+        (118, "Harper Hall", "harperhall", "harperhall", 950.00, '0451987650', "harperhall@gmail.com"),
+        (119, "Daniel King", "danielking", "danielking", 1140.00, '0321987657', "danielking@gmail.com"),
+        (120, "Evelyn Scott", "evelynscott", "evelynscott", 1020.00, '0356789564', "evelynscott@gmail.com"),
+        (121, "Matthew Nelson", "matthewnelson", "matthewnelson", 1200.00, '0412398765', "matthewnelson@gmail.com"),
+        (122, "Liam Baker", "liambaker", "liambaker", 970.00, '0456781230', "liambaker@gmail.com"),
+        (123, "Amelia Adams", "ameliaadams", "ameliaadams", 1030.00, '0321298765', "ameliaadams@gmail.com"),
+        (124, "Aiden Rivera", "aidenrivera", "aidenrivera", 1170.00, '0487654321', "aidenrivera@gmail.com"),
+        (125, "Grace Foster", "gracefoster", "gracefoster", 990.00, '0412387654', "gracefoster@gmail.com"),
+        (126, "Logan Parker", "loganparker", "loganparker", 1100.00, '0356781243', "loganparker@gmail.com");
 
 INSERT INTO speciality (staffid, speciality) VALUES
     (2, 'Mathematics'),

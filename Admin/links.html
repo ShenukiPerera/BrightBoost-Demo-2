@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Submenu Example</title>
+    <style>
+        /* CSS for styling the menu */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul ul {
+            display: none;
+            margin-left: 20px;
+        }
+
+        ul li:hover > ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>Home</li>
+        <li>About
+            <ul>
+                <li>Company</li>
+                <li>Team</li>
+                <li>History</li>
+            </ul>
+        </li>
+        <li>Services
+            <ul>
+                <li>Web Design</li>
+                <li>Graphic Design</li>
+                <li>SEO</li>
+            </ul>
+        </li>
+        <li>Contact</li>
+    </ul>
+</body>
+</html>

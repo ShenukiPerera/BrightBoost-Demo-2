@@ -33,6 +33,28 @@ if ($conn->connect_error)
     die("Connection failed: " . $conn->connect_error);
 }
 
+//Query to display the speciality table data
+$specialitytabledata = "SELECT * FROM speciality";
+$specialitytableresult = $conn->query($specialitytabledata);
+//Displaying table data
+if ($specialitytableresult->num_rows > 0)
+{
+      echo "<table>";
+      echo "<tr><th>StaffID</th><th>Speciality</th></tr>";
+      while ($row = $specialitytableresult->fetch_assoc())
+      {
+           echo "<tr>";
+           echo "<td>" . $row["staffid"] . "</td>";
+           echo "<td>" . $row["speciality"] . "</td>";
+           echo "</tr>";
+      }
+      echo "</table>";
+} 
+else
+{
+     echo "No data found in the database.";
+}
+
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -45,35 +67,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     // SQL query to insert timetable data into the database
     $timetablesql = "INSERT INTO timetable (date, time) VALUES ('$date', '$time')";
     $teachersessionstable= "INSERT INTO teachersessions (date, time, staffid, speciality) VALUES ('$date', '$time', $staffid, '$subject')";
-    
-    if ($conn->query($sql) === TRUE)
+    $sessiontable= "INSERT INTO session (date, time) VALUES('$date', '$time')";
+    if ($conn->query($timetablesql) === TRUE && $conn->query($teachersessionstable) === TRUE && $conn->query($sessiontable) === TRUE)
     {
         echo "Timetable entry created successfully!";
     } 
     else
     {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    //Query to display the speciality table data
-    $specialitytabledata = "SELECT * FROM speciality";
-    $specialitytableresult = $conn->query($specialitytabledata);
-    //Displaying table data
-    if ($specialitytableresult->num_rows > 0)
-    {
-          echo "<table>";
-          echo "<tr><th>StaffID</th><th>Speciality</th><th>Age</th></tr>";
-          while ($row = $specialitytableresult->fetch_assoc())
-          {
-               echo "<tr>";
-               echo "<td>" . $row["staffid"] . "</td>";
-               echo "<td>" . $row["speciality"] . "</td>";
-               echo "</tr>";
-          }
-          echo "</table>";
-    } 
-    else
-    {
-         echo "No data found in the database.";
+        echo "Error: " . $timetablesql . "<br>" . $conn->error;
+        echo "Error: " . $teachersessionstable . "<br>" . $conn->error;
+        echo "Error: " . $sessiontable . "<br>" . $conn->error;
+
+
     }
     
 }
