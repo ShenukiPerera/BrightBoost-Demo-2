@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Update Staff Data</title>
+    <title>Update Student Data</title>
 </head>
 <body>
     <div class="container">
-        <h1>Update Staff Data</h1>
+        <h1>Update Student Data</h1>
 
         <a href="maintainuserdata.html">Back to Maintenance Page</a> <!-- Link to return to the maintenance Page -->
 
-        <h2>Staff Data Update Form</h2>
+        <h2>Student Data Update Form</h2>
 
         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>"> <!-- Submit the form to the current page -->
-            <label for="studentid">Staff ID:</label>
+            <label for="studentid">Student ID:</label>
             <input type="number" name="studentid" required><br><br>
 
             <label for="newusername">New Username:</label>

@@ -17,7 +17,7 @@
                 <li><a href="timetablecreation.php">Create Timetable</a></li>
                 <!-- <li><a href="assigningteachers.php">Assign Teachers to Sessions</a></li> -->
                 <li><a href="viewreports.php">View Analytics Reports</a></li>
-                <li><a href="maintainuserdata.php">Maintain User Data</a></li>
+                <li><a href="maintainuserdata.html">Maintain User Data</a></li>
             </ul>
         </nav>
     </section>

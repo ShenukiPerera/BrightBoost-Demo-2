@@ -52,7 +52,6 @@ if ($result->num_rows > 0) {
     }
 
 
-
 } else {
     // Invalid credentials
     echo '<script>alert("Error: Login failed. Please check your username, password, and role.");</script>';
