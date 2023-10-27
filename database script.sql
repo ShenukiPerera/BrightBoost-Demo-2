@@ -209,3 +209,15 @@ INSERT INTO learning_materials (material_id, material_name, material_link) VALUE
 (2, 'Physics Textbook', 'https://www.ncertbooks.guru/ncert-books-class-10-science/'),
 (3, 'Literature Textbook', 'https://www.saralstudy.com/ncert-ebook-pdf-for-class-10-interact-in-english-literature-reader');
 
+CREATE TABLE studentquestions (
+    question_id INT AUTO_INCREMENT,
+    studentid INT,
+    sessionid INT,
+    question TEXT,
+    submission_time DATETIME,
+    PRIMARY KEY (question_id),
+    FOREIGN KEY (studentid) REFERENCES student(studentid),
+    FOREIGN KEY (sessionid) REFERENCES session(sessionid)
+);
+
+ALTER TABLE queue ADD studentid INT;
