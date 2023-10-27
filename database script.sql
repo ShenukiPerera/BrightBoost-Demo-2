@@ -58,6 +58,7 @@ CREATE TABLE session (
 CREATE TABLE queue (
 	queueid INT auto_increment,
 	sessionid INT ,
+    studentid INT,
     PRIMARY KEY (queueid),
     FOREIGN KEY (sessionid) REFERENCES session(sessionid)
 );
@@ -207,4 +208,3 @@ CREATE TABLE studentquestions (
     FOREIGN KEY (sessionid) REFERENCES session(sessionid)
 );
 
-ALTER TABLE queue ADD studentid INT;
