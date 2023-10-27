@@ -58,6 +58,7 @@ CREATE TABLE session (
 CREATE TABLE queue (
 	queueid INT auto_increment,
 	sessionid INT ,
+    studentid INT,
     PRIMARY KEY (queueid),
     FOREIGN KEY (sessionid) REFERENCES session(sessionid)
 );
@@ -195,4 +196,15 @@ VALUES
         (1, 'Mathematics Textbook', 'https://example.com/math_textbook.pdf'),
         (2, 'Physics Lecture Notes', 'https://example.com/physics_notes.pdf'),
         (3, 'Literature Study Guide', 'https://example.com/lit_study_guide.pdf');
+
+CREATE TABLE studentquestions (
+    question_id INT AUTO_INCREMENT,
+    studentid INT,
+    sessionid INT,
+    question TEXT,
+    submission_time DATETIME,
+    PRIMARY KEY (question_id),
+    FOREIGN KEY (studentid) REFERENCES student(studentid),
+    FOREIGN KEY (sessionid) REFERENCES session(sessionid)
+);
 
