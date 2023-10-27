@@ -1,5 +1,5 @@
 <?php
-require_once("settings.php");
+require_once("../settings.php");
 session_start();
 
 // Check if the user is logged in as a student
@@ -28,7 +28,7 @@ if (isset($_GET['sessionid'])) {
     $sessionid = $_GET['sessionid'];
 
     // Check if the session exists
-    $sql_check_session = "SELECT * FROM session WHERE sessionid='$sessionid'";
+    $sql_check_session = "SELECT * FROM studentsession WHERE sessionid='$sessionid'";
     $result_check_session = $conn->query($sql_check_session);
 
     if ($result_check_session->num_rows > 0) {

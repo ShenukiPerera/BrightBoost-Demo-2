@@ -1,5 +1,5 @@
 <?php
-require_once("settings.php");
+require_once("../settings.php");
 session_start();
 
 // Check if the user is logged in as a student

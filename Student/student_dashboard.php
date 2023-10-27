@@ -1,5 +1,5 @@
 <?php
-require_once("settings.php");
+require_once("../settings.php");
 
 // Create a connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -52,7 +52,7 @@ $conn->close();
         <li><a href="view_timetable.php" id="view-timetable-link">View Timetable</a></li>
         <li><a href="join_queue" id="join-queue-link">Join Session Queue</a></li>
         <li><a href="view_expertise" id="view-expertise-link">View Tutor Expertise</a></li>
-        <li><a href="view_statistics" id="view-statistics-link">View Statistics</a></li>
+        <!-- <li><a href="view_statistics" id="view-statistics-link">View Statistics</a></li> -->
         <li><a href="access_materials" id="access-materials-link">Access Learning Materials</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>

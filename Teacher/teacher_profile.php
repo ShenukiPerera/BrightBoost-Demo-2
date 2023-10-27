@@ -10,10 +10,16 @@ if ($conn->connect_error) {
 }
 
 session_start();
-$username = $_SESSION["username"];
-$staffid = $_SESSION["staffid"];
 
-// echo "Session username   ". $username;
+if (!($_SESSION['username']) && !($_SESSION['staffid'])){
+    echo "user not logged in: try again";
+}else{
+    $username = $_SESSION["username"];
+    $staffid = $_SESSION["staffid"];
+}
+
+
+//  echo "Session username   ". $username;
 // echo "     Session id   ". $staffid;
 
 //fetch staff profile details
