@@ -18,7 +18,7 @@
             <button type="submit">Create Timetable</button>
         </form>
 
-        <a href="admin_home.html">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
+        <a href="admin_home.php">Back to Admin Dashboard</a> <!-- Link to return to the admin dashboard -->
     </div>
     <?php
 // database connection details
