@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var timetableLink = document.getElementById('view-timetable-link');
     var joinQueueLink = document.getElementById('join-queue-link');
     var expertiseLink = document.getElementById('view-expertise-link');
-    var statisticsLink = document.getElementById('view-statistics-link');
+ 
     var materialsLink = document.getElementById('access-materials-link');
 
     // Get content sections by ID
     var timetableSection = document.getElementById('timetable-section');
     var queueSection = document.getElementById('queue-section');
     var expertiseSection = document.getElementById('expertise-section');
-    var statisticsSection = document.getElementById('statistics-section');
+
     var materialsSection = document.getElementById('materials-section');
 
     // Event listeners for menu item clicks
@@ -91,11 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.send();
     });
     
-    statisticsLink.addEventListener('click', function (event) {
-        event.preventDefault();
-        hideAllSections();
-        statisticsSection.style.display = 'block';
-    });
+
 
     materialsLink.addEventListener('click', function (event) {
         event.preventDefault();
@@ -128,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
         timetableSection.style.display = 'none';
         queueSection.style.display = 'none';
         expertiseSection.style.display = 'none';
-        statisticsSection.style.display = 'none';
         materialsSection.style.display = 'none';
     }
 });
