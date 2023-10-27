@@ -89,17 +89,6 @@ $conn->close();
             <!-- Expertise content goes here -->
         </div>
     </div>
-
-    <!-- View Statistics Section -->
-    <div id="statistics-section">
-        <!-- Display statistics data here -->
-
-        <h3>View Statistics</h3>
-        <div id="statistics-content">
-            <!-- Statistics content goes here -->
-        </div>
-    </div>
-
     <!-- Access Learning Materials Section -->
     <div id="materials-section">
         <!-- Display learning materials here -->
