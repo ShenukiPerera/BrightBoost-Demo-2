@@ -70,6 +70,13 @@ CREATE TABLE studentsession (
     
 );
 
+CREATE TABLE learning_materials (
+  'material_id' int NOT NULL AUTO_INCREMENT,
+  'material_name' varchar(255) NOT NULL,
+  'material_link' varchar(255) NOT NULL,
+  PRIMARY KEY ('material_id')
+) 
+
 INSERT INTO staff ( name, username, password, role, contactnumber, email)
 VALUES ( "John Brown", "admin", "admin", "admin", '0412345678', "johnbrown@gmail.com"),
        ("Amy Smith", "AmySmith", "AmySmith", "Teacher", '0412345999', "amysmith@gmail.com"),
@@ -182,4 +189,10 @@ VALUES  (1, 1),
         (7, 2),
         (8, 2),;
 
+
+INSERT INTO learning_materials ('material_id', 'material_name', 'material_link') 
+VALUES
+        (1, 'Mathematics Textbook', 'https://example.com/math_textbook.pdf'),
+        (2, 'Physics Lecture Notes', 'https://example.com/physics_notes.pdf'),
+        (3, 'Literature Study Guide', 'https://example.com/lit_study_guide.pdf');
 
